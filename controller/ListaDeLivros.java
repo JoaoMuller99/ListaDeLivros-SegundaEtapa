@@ -1,14 +1,12 @@
-import view.Interface;
-
 public class ListaDeLivros {
-  private Interface interface;
+  private Interface interfaceObj;
 
   public ListaDeLivros() {
-    interface = new Interface();
+    interfaceObj = new Interface();
   }
 
   public void mostraInterface() {
-    interface.inicializar();
+    interfaceObj.inicializar();
   }
 
   public static void main(String[] args) {

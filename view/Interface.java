@@ -1,7 +1,7 @@
 public class Interface {
   public Interface(){}
 
-  public inicializar() {
+  public void inicializar() {
     System.out.println("Lista de Livros");
   }
 }
