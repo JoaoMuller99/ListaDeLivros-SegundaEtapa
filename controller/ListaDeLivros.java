@@ -1,9 +1,19 @@
-public class ListaDeLivros {
-  public ListaDeLivros() {
+import view.Interface;
 
+public class ListaDeLivros {
+  private Interface interface;
+
+  public ListaDeLivros() {
+    interface = new Interface();
+  }
+
+  public void mostraInterface() {
+    interface.inicializar();
   }
 
   public static void main(String[] args) {
-    System.out.println("Lista de Livros");
+    ListaDeLivros listaDeLivros = new ListaDeLivros();
+
+    listaDeLivros.mostraInterface();
   }
 }
