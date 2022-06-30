@@ -45,6 +45,14 @@ public class ListaDeLivros {
     this.livros.add(livro);
   }
 
+  public void cadastrarEdicao(Edicao edicao) {
+    this.edicoes.add(edicao);
+  }
+
+  public void cadastrarLivroAutor(LivroAutor livroAutor) {
+    this.livrosAutores.add(livroAutor);
+  }
+
   public void ordenar() {
     if (this.livros.size() > 0) {
       Collections.sort(this.livros, new Comparator<Livro>() {
@@ -71,18 +79,18 @@ public class ListaDeLivros {
   }
 
   public ArrayList<Livro> getLivros() {
-    return livros;
+    return this.livros;
   }
 
   public ArrayList<Edicao> getEdicoes() {
-    return edicoes;
+    return this.edicoes;
   }
 
   public ArrayList<Autor> getAutores() {
-    return autores;
+    return this.autores;
   }
 
   public ArrayList<LivroAutor> getLivrosAutores() {
-    return livrosAutores;
+    return this.livrosAutores;
   }
 }
