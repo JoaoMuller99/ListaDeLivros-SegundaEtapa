@@ -27,6 +27,30 @@ public class Interface {
     return leitorInt.nextInt();
   }
 
+  public int selecinarNovoCadastro() {
+    try {
+      System.out.println("--------------------------------------------------");
+      System.out.println("Digite o numero da acao que deseja realizar:");
+      System.out.println("1 - Cadastrar novo livro");
+      System.out.println("2 - Cadastrar nova edicao");
+      System.out.println("--------------------------------------------------");
+
+      int opcaoEscolhida = leitorInt.nextInt();
+
+      if (opcaoEscolhida == 1 || opcaoEscolhida == 2) {
+        return opcaoEscolhida;
+      }
+
+      throw new Exception();
+    } catch (Exception e) {
+      System.out.println("--------------------------------------------------");
+      System.out.println("Opcao invalida!");
+      System.out.println("--------------------------------------------------");
+
+      return -1;
+    }
+  }
+
   public Livro novoLivro(int codigoLivro) {
     try {
       System.out.println("--------------------------------------------------");
@@ -44,6 +68,34 @@ public class Interface {
     }
   }
 
+  public int selecinarLivro(ArrayList<Livro> livros) {
+    try {
+      System.out.println("--------------------------------------------------");
+      System.out.println("Digite o codigo do livro:");
+      for (Livro livro : livros) {
+        System.out.println(livro.getCodigo() + " - " + livro.getTitulo());
+      }
+      System.out.println("--------------------------------------------------");
+      int codigoLivro = leitorInt.nextInt();
+
+      for (Livro livro : livros) {
+        if (livro.getCodigo() == codigoLivro) {
+          return codigoLivro;
+        }
+      }
+      
+      throw new Exception();
+    } catch (Exception e) {
+      System.out.println("--------------------------------------------------");
+      System.out.println("Codigo de livro invalido!");
+      System.out.println("--------------------------------------------------");
+      System.out.println("Pressione um botao para continuar...");
+      leitorString.nextLine();
+
+      return -1;
+    }
+  }
+
   public Edicao novaEdicao(int codigoLivro) {
     try {
       System.out.println("--------------------------------------------------");
@@ -58,8 +110,29 @@ public class Interface {
       System.out.println("--------------------------------------------------");
       System.out.println("Erro ao cadastrar edicao!");
       System.out.println("--------------------------------------------------");
+      System.out.println("Pressione um botao para continuar...");
+      leitorString.nextLine();
 
       return null;      
+    }
+  }
+
+  public Autor novoAutor(int codigoAutor) {
+    try {
+      System.out.println("--------------------------------------------------");
+      System.out.println("Digite o nome do autor:");
+      String nome = leitorString.nextLine();
+      System.out.println("--------------------------------------------------");
+
+      return new Autor(codigoAutor, nome);
+    } catch (Exception e) {
+      System.out.println("--------------------------------------------------");
+      System.out.println("Erro ao cadastrar autor!");
+      System.out.println("--------------------------------------------------");
+      System.out.println("Pressione um botao para continuar...");
+      leitorString.nextLine();
+
+      return null;
     }
   }
 
@@ -89,12 +162,25 @@ public class Interface {
     System.out.println("--------------------------------------------------");
     System.out.println("Livro removido com sucesso!");
     System.out.println("--------------------------------------------------");
+    System.out.println("Pressione um botao para continuar...");
+    leitorString.nextLine();
   }
 
   public void erroRemocaoLivro() {
     System.out.println("--------------------------------------------------");
     System.out.println("Nao ha livros para remover!");
     System.out.println("--------------------------------------------------");
+    System.out.println("Pressione um botao para continuar...");
+    leitorString.nextLine();
+  }
+
+  public void edicaoJaCadastrada(){
+    System.out.println("--------------------------------------------------");
+    System.out.println("Edicao ja cadastrada!");
+    System.out.println("--------------------------------------------------");
+
+    System.out.println("Pressione um botao para continuar...");
+    leitorString.nextLine();
   }
 
   public void listarLivros(ArrayList<Livro> livros) {
@@ -112,5 +198,10 @@ public class Interface {
 
     System.out.println("Pressione um botao para continuar...");
     leitorString.nextLine();
+  }
+
+  public void clearScreen() {
+    System.out.print("\033[H\033[2J");
+    System.out.flush();
   }
 }

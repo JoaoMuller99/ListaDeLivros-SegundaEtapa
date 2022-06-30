@@ -15,6 +15,7 @@ public class ListaDeLivros {
   private ArrayList<LivroAutor> livrosAutores = new ArrayList<LivroAutor>();
 
   public ListaDeLivros() {
+    // EDITAR AQUI OS DADOS INICIAIS, PREENCHENDO OS DADOS DO BANCO
     this.livros.add(new Livro(1, "Java"));
     this.livros.add(new Livro(2, "C++"));
     this.livros.add(new Livro(3, "C#"));
@@ -49,6 +50,10 @@ public class ListaDeLivros {
     this.edicoes.add(edicao);
   }
 
+  public void cadastrarAutor(Autor autor) {
+    this.autores.add(autor);
+  }
+
   public void cadastrarLivroAutor(LivroAutor livroAutor) {
     this.livrosAutores.add(livroAutor);
   }
@@ -58,7 +63,7 @@ public class ListaDeLivros {
       Collections.sort(this.livros, new Comparator<Livro>() {
           @Override
           public int compare(final Livro object1, final Livro object2) {
-              return object1.getTitulo().compareTo(object2.getTitulo());
+              return object1.getTitulo().toLowerCase().compareTo(object2.getTitulo().toLowerCase());
           }
       });
     }
